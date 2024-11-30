@@ -7,5 +7,7 @@ int main () {
 	cout << " Halil Ganteng" << endl;
 	cout << "awas marmet" << endl;
 	cout << "qalil " << endl;
+	
+	cout << "qalil asuh" << endl;
 	return 0;
 }
