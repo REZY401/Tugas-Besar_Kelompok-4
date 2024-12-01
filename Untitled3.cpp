@@ -11,10 +11,30 @@ struct Tanaman {
 };
 
 void cekKesehatan(Tanaman &t) {
-    t.kesehatan = (t.kelembaban < 30 ? "Butuh penyiraman" : 
-                   t.kelembaban < 60 ? "Normal" : "Tidak perlu disiram");
-    t.kesehatan += (t.cahaya < 30 ? ", butuh cahaya" : 
-                    t.cahaya > 70 ? ", terlalu banyak cahaya" : ", cukup cahaya");
+    if (t.kelembaban < 30) {
+        t.kesehatan = "Butuh penyiraman segera";
+    } else if (t.kelembaban < 60) {
+        t.kesehatan = "Kondisi normal";
+    } else {
+        t.kesehatan = "Tidak perlu disiram";
+    }
+
+    if (t.cahaya < 30) {
+        t.kesehatan += " dan butuh lebih banyak cahaya";
+    } else if (t.cahaya > 70) {
+        t.kesehatan += " dan terlalu banyak cahaya";
+    } else {
+        t.kesehatan += " dan mendapat cukup cahaya";
+    }
+
+    if (t.kelembaban < 10) {
+        t.kesehatan += " (PERINGATAN: Kelembapan sangat rendah!)";
+    }
+    if (t.cahaya > 90) {
+        t.kesehatan += " (PERINGATAN: Cahaya terlalu intens!)";
+    }else if(t.cahaya < 5){
+    	t.kesehatan += " (PERINGATAN: Cahaya terlalu rendah!)";
+	}
 }
 
 void tambahTanaman(queue<Tanaman> &tanamanQueue) {
@@ -140,8 +160,11 @@ int main() {
     int pilihan;
 
     do {
-        cout << "\n1. Tambah Tanaman\n2. Tampilkan Tanaman\n3. Hapus Tanaman\n4. Edit Tanaman\n5. Cari Tanaman\n6. Keluar\nPilihan: ";
+    	cout << "\n====Sisem pengelolaan kesehatan tanaman====";
+        cout << "\n1. Tambah Tanaman\n2. Tampilkan Tanaman\n3. Hapus Tanaman\n4. Edit Tanaman\n5. Cari Tanaman\n6. Keluar\n";
+        cout << "Pilihan: ";
         cin >> pilihan;
+
         
          switch (pilihan) {
             case 1: tambahTanaman(tanamanQueue); break;
