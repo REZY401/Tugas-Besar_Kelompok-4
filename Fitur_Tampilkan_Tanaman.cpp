@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <string>
 using namespace std;
 
 struct Tanaman {
@@ -37,17 +36,6 @@ void cekKesehatan(Tanaman &t) {
 	}
 }
 
-void tambahTanaman(queue<Tanaman> &tanamanQueue) {
-    Tanaman t;
-    cin.ignore();
-    cout << "Nama: "; getline(cin, t.nama);
-    cout << "Kelembaban (0-100): "; cin >> t.kelembaban;
-    cout << "Cahaya (0-100): "; cin >> t.cahaya;
-    cekKesehatan(t);
-    tanamanQueue.push(t);
-    cout << "Tanaman berhasil ditambahkan!\n";
-}
-
 void tampilkanTanaman (queue<Tanaman> tanamanQueue){
 	if (tanamanQueue.empty()){
 		cout << "Tidak ada tanaman. \n";
@@ -68,21 +56,18 @@ int main(){
 	int pilihan;
 	
 	do{
-	cout << "Fitur Menampilkan Tanaman yang Telah ditambahkan" << endl;
-	cout << "1. Tambahkan Tanaman" << endl;
-	cout << "2. Tampilkan Tanaman" << endl;
-	cout << "3. Keluar" << endl;
-	cout << "Pilih [1..3]: "; cin >> pilihan;
+	cout << "\nFitur Menampilkan Tanaman yang Telah ditambahkan" << endl;
+	cout << "1. Tampilkan Tanaman" << endl;
+	cout << "2. Keluar" << endl;
+	cout << "Pilih [1..2]: "; cin >> pilihan;
 	
 	switch (pilihan){
-		case 1: tambahTanaman(tanamanQueue);
+		case 1: tampilkanTanaman(tanamanQueue);
 		break;
-		case 2: tampilkanTanaman(tanamanQueue);
-		break;
-		case 3: cout << "Selesai";
+		case 2: cout << "Selesai";
 		default: cout << "Ga ada pilihan, try again";
 	}
-	}while (pilihan !=3);
+	}while (pilihan !=2);
 	
 	return 0;
 }
