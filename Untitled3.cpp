@@ -36,7 +36,6 @@ void cekKesehatan(Tanaman &t) {
     	t.kesehatan += " (PERINGATAN: Cahaya terlalu rendah!)";
 	}
 }
-
 void tambahTanaman(queue<Tanaman> &tanamanQueue) {
     Tanaman t;
     cin.ignore();
