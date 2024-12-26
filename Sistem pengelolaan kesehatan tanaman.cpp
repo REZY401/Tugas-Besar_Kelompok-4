@@ -36,10 +36,27 @@ void cekKesehatan(Tanaman &t) {
     	t.kesehatan += " (PERINGATAN: Cahaya terlalu rendah!)";
 	}
 }
+
+bool SudahAdaTanaman(queue<Tanaman> tanamanQueue, const string &nama) {
+    while (!tanamanQueue.empty()) {
+        if (tanamanQueue.front().nama == nama) {
+            return true;
+        }
+        tanamanQueue.pop();
+    }
+    return false;
+}
+
 void tambahTanaman(queue<Tanaman> &tanamanQueue) {
     Tanaman t;
     cin.ignore();
     cout << "Nama: "; getline(cin, t.nama);
+
+    if (SudahAdaTanaman(tanamanQueue, t.nama)) {
+        cout << "Tanaman dengan nama '" << t.nama << "' sudah ada dalam antrian.\n";
+        return;
+    }
+    
     cout << "Kelembaban (0-100): "; cin >> t.kelembaban;
     cout << "Cahaya (0-100): "; cin >> t.cahaya;
     cekKesehatan(t);
@@ -60,7 +77,6 @@ void tampilkanTanaman(queue<Tanaman> tanamanQueue) {
 		cout << "Kelembaban: " << t.kelembaban << "%" << endl;
         cout << "Cahaya: " << t.cahaya << "%" << endl; 
 		cout << "Kesehatan: " << t.kesehatan << endl;
-
     }
 }
 
