@@ -4,15 +4,15 @@ using namespace std;
 
 struct Tanaman {
     string nama;
-    int kelembaban;
+    int kelembapan;
     int cahaya;
     string kesehatan;
 };
 
 void cekKesehatan(Tanaman &t) {
-    if (t.kelembaban < 30) {
+    if (t.kelembapan < 30) {
         t.kesehatan = "Butuh penyiraman segera";
-    } else if (t.kelembaban < 60) {
+    } else if (t.kelembapan < 60) {
         t.kesehatan = "Kondisi normal";
     } else {
         t.kesehatan = "Tidak perlu disiram";
@@ -26,7 +26,7 @@ void cekKesehatan(Tanaman &t) {
         t.kesehatan += " dan mendapat cukup cahaya";
     }
 
-    if (t.kelembaban < 10) {
+    if (t.kelembapan < 10) {
         t.kesehatan += " (PERINGATAN: Kelembapan sangat rendah!)";
     }
     if (t.cahaya > 90) {
@@ -45,7 +45,7 @@ void tampilkanTanaman (queue<Tanaman> tanamanQueue){
 		Tanaman t = tanamanQueue.front();
 		tanamanQueue.pop();
 		cout << "Nama: " << t.nama << endl;
-		cout << "Kelembapan: " << t.kelembaban << "%" << endl;
+		cout << "Kelembapan: " << t.kelembapan << "%" << endl;
 		cout << "Cahaya: " << t.cahaya << "%" << endl;
 		cout << "Kesehatan: " << t.kesehatan << endl;
 	}
@@ -62,11 +62,12 @@ int main(){
 	cout << "Pilih [1..2]: "; cin >> pilihan;
 	
 	switch (pilihan){
-		case 1: tampilkanTanaman(tanamanQueue);
-		break;
-		case 2: cout << "Selesai";
-		default: cout << "Ga ada pilihan, try again";
-	}
+			case 1: tampilkanTanaman(tanamanQueue);
+			break;
+			case 2: cout << "Selesai";
+			break;
+			default: cout << "Ga ada pilihan, try again";
+		}
 	}while (pilihan !=2);
 	
 	return 0;

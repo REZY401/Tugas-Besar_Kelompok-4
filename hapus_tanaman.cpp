@@ -8,11 +8,12 @@ struct Tanaman {
 	int cahaya;
 	string kesehatan;
 };
+
  void hapustanaman(queue<Tanaman> &tanamanQueue){
  	if (tanamanQueue.empty()){
  		cout <<"tidak ada tanaman untuk dihapus.\n";
  		return; 
-	 }
+	}
  	string nama;
  	cin.ignore();
  	cout <<"Nama tanaman yang akan dihapus :";
@@ -57,4 +58,3 @@ int main(){
 		break;
 	}
 }
- 
